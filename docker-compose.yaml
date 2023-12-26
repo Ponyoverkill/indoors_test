@@ -1,44 +1,42 @@
 version: "3.9"
 services:
-  redis:
-    image: redis:7.2.1-alpine
-    container_name: redis
-    restart: always
-    env_file:
-      - ./cats/.env
-    ports:
-      - '6378:6379'
-#    networks:
-#      - local-net
+#  redis:
+#    image: redis:7.2.1-alpine
+#    container_name: redis
+#    restart: always
+#    env_file:
+#      - ./cats/.env
+#    ports:
+#      - '6378:6379'
   db:
     image: postgres:14.8-alpine3.18
     container_name: pgSQL
     env_file:
       - ./cats/.env
-    volumes:
-      - ./indoors.sql:/docker-entrypoint-initdb.d/001.sql
+#    volumes:
+#      - ./indoors.sql:/docker-entrypoint-initdb.d/001.sql
 #      - ./breeds.sql:/docker-entrypoint-initdb.d/001.sql
 #      - ./wool_types.sql:/docker-entrypoint-initdb.d/001.sql
-      - kittens_data:/var/lib/postgresql/data
+#      - kittens_data:/var/lib/postgresql/data
 #    networks:
 #      - bewise-net
     ports:
       - "5431:5432"
-  back-app:
-    build:
-      context: .
-    env_file:
-      - ./cats/.env
-    container_name: app
-    command: ["/cats/python"]
-    networks:
-      - bewise-net
-    ports:
-      - "1234:8000"
-    depends_on:
-      - db
-volumes:
-  kittens_data:
+#  back-app:
+#    build:
+#      context: .
+#    env_file:
+#      - ./cats/.env
+#    container_name: app
+#    command: ["/cats/python"]
+#    networks:
+#      - bewise-net
+#    ports:
+#      - "1234:8000"
+#    depends_on:
+#      - db
+#volumes:
+#  kittens_data:
 #
 #networks:
 #  bewise-net:
