@@ -1,0 +1,40 @@
+mat-card{
+  width: 60vw;
+  min-width: 600px;
+  margin: 10vh auto;
+
+}
+
+mat-card-title{
+  font-size: 30px;
+}
+
+.cancel{
+  margin-left: 5px;
+}
+
+.file-input{
+  color: #c2c2c2;
+}
+
+
+
+mat-form-field{
+  font-size: 20px;
+  margin-top: 20px;
+  width: 30vw;
+}
+
+
+
+.input-info{
+  margin-top: 10px;
+  word-wrap: break-word;
+  width: 95%;
+  border-radius: 15px;
+  background-color: #c7c2c2;
+  border: 1px solid #c7c2c2;
+  padding: 10px 10px;
+  color: #262626;
+  font-size: 20px;
+}

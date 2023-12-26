@@ -1,0 +1,20 @@
+<mat-card class="kitten-card">
+  <mat-card-header>
+    <img mat-card-xl-image [src]="kittenService.kitten.photo">
+    <mat-card-title>Кличка - {{kittenService.kitten.name}}</mat-card-title>
+    <mat-card-subtitle>Порода - {{kittenService.kitten.breed.name}}</mat-card-subtitle>
+    <mat-card-subtitle>Тип шерсти - {{kittenService.kitten.wool_type.name}}</mat-card-subtitle>
+     <mat-card-subtitle>Дата рождения - {{kittenService.kitten.birth_date}}</mat-card-subtitle>
+    <mat-card-subtitle>Заводчик- {{kittenService.kitten.owner.username}} {{kittenService.kitten.owner.last_name}}</mat-card-subtitle>
+    <mat-card-subtitle (click)="chat.initialize(this.auth.user, kittenService.kitten.owner, this.auth.access); scrollChatEvent.emit()" *ngIf="user.id != kittenService.kitten.owner.id && Logged"><button mat-raised-button color="accent">Написать</button></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{kittenService.kitten.info}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="Logged && (kittenService.isMine(user.id))">
+    <button class="change" mat-raised-button color="primary" routerLink="/edit/{{kittenService.kitten.id}}">Изменить</button>
+    <button class="delete" mat-raised-button color="warn" routerLink="" (click)="delete()">Удалить</button>
+  </mat-card-actions>
+</mat-card>

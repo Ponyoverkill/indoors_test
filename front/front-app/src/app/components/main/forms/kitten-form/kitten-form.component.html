@@ -1,0 +1,107 @@
+<ng-template *ngIf="Logged == true; then uLogged"></ng-template>
+
+<ng-template #uLogged>
+  <mat-card *ngIf="state=='create'" class="kitten-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field>
+          <mat-label>Кличка</mat-label>
+          <input matInput #name >
+         </mat-form-field>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <mat-form-field>
+          <mat-label>Порода</mat-label>
+          <mat-select #breed>
+            <mat-option *ngFor="let breed of kittenService.breeds;" [value]="breed.id">{{breed.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <mat-form-field>
+          <mat-label>Тип шерсти</mat-label>
+          <mat-select #wool_type >
+            <mat-option *ngFor="let wool of kittenService.wools;" [value]="wool.id">{{wool.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <mat-form-field>
+          <mat-label>Дата рождения</mat-label>
+          <input #birth_date matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <div class="image-input"><input class="file-input" (change)="uploadFile($event)" type="file"></div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="input-info">
+        <mat-label>Информация</mat-label>
+        <textarea #info matInput ></textarea>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="create" (click)="onSubmit(name.value, info.value, birth_date.value, breed.value, wool_type.value)" mat-raised-button color="primary" routerLink="/mycats/{{kittenService.kitten.id}}">Подтвердить</button>
+      <button class="cancel" routerLink="/kitten/{{kittenService.kitten.id}}" mat-raised-button color="warn">Отмена</button>
+    </mat-card-actions>
+  </mat-card>
+
+
+
+
+
+  <mat-card *ngIf="state=='edit'" class="kitten-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field>
+          <mat-label>Кличка</mat-label>
+          <input matInput #name [value]="kittenService.kitten.name">
+         </mat-form-field>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <mat-form-field>
+          <mat-label>Порода</mat-label>
+          <mat-select #breed [value]="kittenService.kitten.breed.id">
+            <mat-option *ngFor="let breed of kittenService.breeds;" [value]="breed.id">{{breed.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <mat-form-field>
+          <mat-label>Тип шерсти</mat-label>
+          <mat-select #wool_type [value]="kittenService.kitten.wool_type.id">
+            <mat-option *ngFor="let wool of kittenService.wools;" [value]="wool.id">{{wool.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <mat-form-field>
+          <mat-label>Дата рождения</mat-label>
+          <input #birth_date [value]="kittenService.kitten.birth_date" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-card-subtitle>
+      <mat-card-title>
+        <div class="image-input"><input class="file-input" (change)="uploadFile($event)" type="file"></div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="input-info">
+        <mat-label>Информация</mat-label>
+        <textarea #info matInput [value]="kittenService.kitten.info"></textarea>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="change" (click)="onSubmit(name.value, info.value, birth_date.value, breed.value, wool_type.value)" mat-raised-button color="primary" routerLink="/edit/{{kittenService.kitten.id}}">Подтвердить</button>
+      <button class="cancel" routerLink="/kitten/{{kittenService.kitten.id}}" mat-raised-button color="warn">Отмена</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>
+
+

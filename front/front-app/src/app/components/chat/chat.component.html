@@ -1,0 +1,17 @@
+<button mat-raised-button color="primary" class="action-button open" (click)="chat.state='open'; scrollToBottom()" *ngIf="chat.state =='close' && chat.chat.pk != 0">Чат</button>
+<button *ngIf="chat.state == 'open'" mat-raised-button color="basic" class="action-button close" (click)="chat.state='close'">Свернуть</button>
+<div #scrollMe [scrollTop]="scrollMe.scrollHeight" class="chat-list" *ngIf="chat.state == 'open'">
+    <div class="message-container" *ngFor="let m of chat.chat.messages;">
+      <div *ngIf="m.user.username == user.username"class="message message-right">
+        <p>{{m.text}}</p>
+      </div>
+      <div  *ngIf="m.user.username != user.username" class="message message-left">
+        <p>{{m.text}}</p>
+      </div>
+    </div>
+</div>
+<mat-form-field *ngIf="chat.state == 'open'">
+    <mat-label>...</mat-label>
+    <input matInput #someMessage (keydown.enter)="chat.sendMessage(someMessage.value); someMessage.value=''; scrollToBottom()" type="text"/>
+</mat-form-field>
+

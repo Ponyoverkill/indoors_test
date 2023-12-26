@@ -1,0 +1,87 @@
+.Last{
+  background-color: red;
+}
+
+.chat-list{
+  position: fixed;
+  width: 300px;
+  height: 400px;
+  bottom: 40px;
+  right: 0;
+  border: 1px solid #262626;
+  background-color: white;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  overflow-y: auto;
+}
+
+.action-button{
+  position: fixed;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.close{
+  right: 198px;
+  bottom: 441px;
+}
+
+.open{
+  right: 0;
+  bottom: 0;
+}
+
+
+.message-right{
+  text-align: right;
+}
+
+.message-right p {
+  background-color: #a2aec2;
+}
+
+.message-left{
+  text-align: left;
+
+}
+
+.message-left p {
+  background-color: #c7c2c2;
+}
+
+.message-container{
+  height: content-box;
+  width: 100%;
+}
+
+.message p{
+  display: inline-block;
+  width: content-box;
+
+  max-width: 70%;
+  height: content-box;
+  word-break: break-word;
+
+  border-radius: 15px;
+  border: 1px solid #c7c2c2;
+  padding: 10px 10px;
+  color: #262626;
+  font-size: 15px;
+}
+
+mat-form-field{
+  position: fixed;
+  bottom: -25px;
+  right: 0;
+  width: 302px;
+}
+
+
+input{
+  height: 10px;
+}
+
+
+
+
+

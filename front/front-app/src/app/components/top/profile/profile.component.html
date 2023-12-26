@@ -1,0 +1,34 @@
+<ng-template *ngIf="state == 'unLoggedView'; then UnLogged;"></ng-template>
+<ng-template *ngIf="state == 'loggedView'; then Logged"></ng-template>
+<ng-template *ngIf="state == 'register'; then Register"></ng-template>
+<ng-template *ngIf="state == 'login'; then Login"></ng-template>
+<!--<ng-template *ngIf="state == 'login' || state == 'register'; then CButton;"></ng-template>-->
+
+<!--<div (authRequiredEvent)="setState('login')"></div>-->
+<!--<div (loginSuccessEvent)="loggedIn()"></div>-->
+<!--<div (logoutSuccessEvent)="loggedOut()"></div>-->
+<!--<div (loginRequiredEvent)="setState('login')"></div>-->
+
+<ng-template #UnLogged>
+      <button mat-raised-button class="login" color="accent" (click)="setState('login')">Войти</button>
+      <button mat-raised-button class="register" color="accent" (click)="setState('register')">Регистрация</button>
+</ng-template>
+
+<ng-template #Logged>
+  <app-profile-view (logoutEvent)="logoutUser()" [user]="user"></app-profile-view>
+</ng-template>
+
+
+<ng-template #Login>
+  <app-login (cancelEvent)="auth.showLoginForm(false)" (loginEvent)="loginUser($event)"></app-login>
+</ng-template>
+
+<ng-template #Register>
+  <app-register (cancelEvent)="setState('unLoggedView')" (registerEvent)="registerUser($event)"></app-register>
+</ng-template>
+
+<!--<ng-template #CButton>-->
+<!--    <button mat-raised-button color="warn" (click)="setState('unLoggedView')">Отмена</button>-->
+<!--</ng-template>-->
+
+
