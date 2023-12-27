@@ -21,3 +21,6 @@ cats/cats/__pycache__/wsgi.cpython-37.pyc
 .idea/inspectionProfiles/Project_Default.xml
 breeds.txt
 venv/
+wsgienv/
+asgienv/
+cats/

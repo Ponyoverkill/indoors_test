@@ -2,7 +2,7 @@ import {Injectable, Output} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {IKitten} from "../models/kitten";
 
-import {BACKEND_HOST, BACKEND_URLS} from "../environments/environment";
+import {BACKEND_URLS, WSGI_HOST, STATIC_HOST} from "../environments/environment";
 import {IBreed} from "../models/breed";
 import {IWool} from "../models/wool_type";
 import {IUserView} from "../models/user";
@@ -164,7 +164,7 @@ export class KittenService {
         owner: number
       }>(`${BACKEND_URLS.kittens}${id}/`).subscribe({
         next: async (v) => {
-          v.photo = `http://${BACKEND_HOST}${v.photo}`
+          v.photo = `${STATIC_HOST}${v.photo}`
           let breed: IBreed = {id: 0, name: ''}
           if (v.breed != null){
             breed = await this.getBreed(v.breed)
@@ -208,7 +208,7 @@ export class KittenService {
       next: async (v) => {
         let kittens: IKitten[] = []
         for (let k of v) {
-          k.photo = `http://${BACKEND_HOST}${k.photo}`
+          k.photo = `${STATIC_HOST}${k.photo}`
           let breed: IBreed = {id: 0, name: ''}
           if (k.breed != null){
             breed = await this.getBreed(k.breed)
@@ -257,7 +257,7 @@ export class KittenService {
       next: async (v) => {
         let kittens = []
         for (let k of v) {
-          k.photo = `http://${BACKEND_HOST}${k.photo}`
+          k.photo = `${STATIC_HOST}${k.photo}`
           let breed: IBreed = {id: 0, name: ''}
           if (k.breed != null){
             breed = await this.getBreed(k.breed)

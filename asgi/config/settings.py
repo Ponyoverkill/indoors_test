@@ -14,7 +14,7 @@ from datetime import timedelta
 from pathlib import Path
 # print(__file__)
 # print(__name__)
-from cats.config import DB_HOST, DB_PORT, DB_PASS, DB_USER, DB_NAME, REDIS_HOST, REDIS_PORT
+from config.config import DB_HOST, DB_PORT, DB_PASS, DB_USER, DB_NAME, REDIS_HOST, REDIS_PORT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'kittens.apps.KittensConfig',
     'channels',
     'rest_framework',
     'chat.apps.ChatConfig'
@@ -60,13 +59,12 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'cats.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -84,8 +82,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cats.wsgi.application'
-ASGI_APPLICATION = 'cats.asgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
+ASGI_APPLICATION = 'config.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

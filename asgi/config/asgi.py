@@ -12,11 +12,9 @@ import django
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 
-
-
 from chat.middleware import JwtAuthMiddlewareStack
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cats.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
 application = get_asgi_application()
 from chat import routing
