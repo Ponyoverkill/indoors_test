@@ -15,4 +15,4 @@ in root project directory run:
 docker-compose up
 ```
 
-you can try in on:
+you can try in on: dummy-kitties.ru
